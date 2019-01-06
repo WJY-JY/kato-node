@@ -794,7 +794,13 @@ function invoke(ctx, next) {
         //代理context
         const moduleProxy = new Proxy(module, {
             get(target, key) {
-                return key === 'context' ? ctx : target[key];
+                if (key === 'context') {
+                    console.warn('kato: 通过this.context来获取上下文的方式已经过时,请使用Context.current来获取当前执行的上下文');
+                    return ctx;
+                }
+                else {
+                    return target[key];
+                }
             }
         });
         //调用方法,同时也处理好异步
