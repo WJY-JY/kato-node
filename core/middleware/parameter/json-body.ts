@@ -16,7 +16,7 @@ export default async function jsonBody(ctx: Context, next: Middleware) {
   const res = ctx.res;
 
   //解析json类型的数据
-  const jsonParser = middlewareWrapper(bodyParser.json({reviver}));
+  const jsonParser = middlewareWrapper(bodyParser.json({reviver, limit: '10240kb'}));
   await jsonParser(req, res);
   const body = req.body;
 

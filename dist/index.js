@@ -571,7 +571,7 @@ function jsonBody(ctx, next) {
         const req = ctx.req;
         const res = ctx.res;
         //解析json类型的数据
-        const jsonParser = middleware_utils_1.middlewareWrapper(bodyParser.json({ reviver: json_1.reviver }));
+        const jsonParser = middleware_utils_1.middlewareWrapper(bodyParser.json({ reviver: json_1.reviver, limit: '10240kb' }));
         yield jsonParser(req, res);
         const body = req.body;
         //注入到parameters中,application/json类型的post不需要做json的反序列化了
