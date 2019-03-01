@@ -1,6 +1,6 @@
 {
   "name": "kato-server",
-  "version": "2.0.01",
+  "version": "2.0.03",
   "description": "kato server",
   "main": "dist/index.js",
   "types": "./dist/index.d.ts",
