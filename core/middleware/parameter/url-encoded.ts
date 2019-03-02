@@ -3,7 +3,7 @@ import {Middleware} from "../../middleware";
 import {IncomingMessage} from "http";
 import {middlewareWrapper} from "../../common/middleware-utils";
 import * as bodyParser from "body-parser";
-import {jsonParse, reviver} from "../../common/json";
+import {jsonParse} from "../../common/json";
 import {KatoRuntimeError} from "../../error";
 
 //增强的req,保证静态检查,规范写法
