@@ -3,7 +3,7 @@ import {Middleware} from "../../middleware";
 import {IncomingMessage} from "http";
 import {middlewareWrapper} from "../../common/middleware-utils";
 import * as bodyParser from "body-parser";
-import {jsonParse} from "../../common/json";
+import {jsonParse, reviver} from "../../common/json";
 import {KatoRuntimeError} from "../../error";
 
 //增强的req,保证静态检查,规范写法
@@ -17,7 +17,7 @@ export default async function urlEncoded(ctx: Context, next: Middleware) {
   const res = ctx.res;
 
   //解析json类型的数据
-  const jsonParser = middlewareWrapper(bodyParser.urlencoded({extended: false}));
+  const jsonParser = middlewareWrapper(bodyParser.urlencoded({extended: false, limit: '10240kb'}));
   await jsonParser(req, res);
   const body = req.body;
 
