@@ -17,7 +17,7 @@ export default async function urlEncoded(ctx: Context, next: Middleware) {
   const res = ctx.res;
 
   //解析json类型的数据
-  const jsonParser = middlewareWrapper(bodyParser.urlencoded({extended: false}));
+  const jsonParser = middlewareWrapper(bodyParser.urlencoded({extended: false, limit: '10240kb'}));
   await jsonParser(req, res);
   const body = req.body;
 
