@@ -296,7 +296,7 @@ function paramValidate(ctx, next) {
                 .forEach(it => {
                 const result = joi.validate(it.value, it.schema.label(it.name), { convert: false });
                 if (result.error) {
-                    throw new error_1.KatoRuntimeError(`${ctx.module.name}.${ctx.method.name} => ${result.error.message}`);
+                    throw new error_1.KatoRuntimeError(`${result.error.message}`);
                 }
             });
         }
